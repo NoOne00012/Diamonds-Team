@@ -1,3 +1,4 @@
+<script type="py">
 import brawlstats as bs
 from js import document
 from pyodide.ffi import create_proxy
@@ -22,3 +23,4 @@ while True:
 
 proxy = create_proxy(on_button_click)
 document.getElementById("MyButton").addEventListener("click", proxy)
+</script>
