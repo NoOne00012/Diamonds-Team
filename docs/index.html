@@ -37,43 +37,32 @@
 <body>    
 	<link rel="stylesheet" href="https://pyscript.net/releases/2024.10.2/core.css">
 	<script type="module" src="https://pyscript.net/releases/2024.10.2/core.js"></script>
-	<div class="center-block">
+	<div>
 	<img
 		src="./DT.jpg"
 		alt="Diamonds Team иконка"
 		width="40%"><br>
 
 	<input id = 'inf' placeholder = 'Введи свой тег-id'><br>
-	<button id = 'MyButton'>Ввести</button>
+	<button id = 'MyButton' onclick = 'x()'>Ввести</button>
 		
-	<py-script>
-		<script type="py">
-			import brawlstats as bs
-			from js import document
-			from pyodide.ffi import create_proxy
-			def on_button_click(event):
-				input_value = document.getElementById("inf").value
-				print(f"Значение: {input_value}")
-			
-			
-			brawl = bs.Client ('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImY3NjkwZmY5LTRmMDgtNGMyOS1iODdmLTBmNzhlY2EyMzg1ZCIsImlhdCI6MTczMzU2NDQ5OSwic3ViIjoiZGV2ZWxvcGVyLzkxOTJhMTM4LTAzZmQtNWFkNy1iNjFkLWNkNzU1NGE0NmIyMyIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcnMiOlsiNS41My4xMTMuMjAxIl0sInR5cGUiOiJjbGllbnQifV19.tkrpGkqeo5YNpIJNFaqqRnhk1YqeC1DCi-YJivqzcZIjIht1dQtlvbhFiIlq_g-7LeLU0fddjHP7WNqusLA5QQ')
-			
-			while True:
-			    try:
-			        danni = document.getElementById("inf").value
-			        prof = brawl.get_profile (danni)
-			        club = prof ['club']
-			        print (prof ['name'], ' | ', club ['name'], ' | ', prof ['trophies'])
-			    except:
-			        danni = input ('Данные не корректны. Попробуйте ещё раз: ')
-			        prof = brawl.get_profile (danni)
-			        club = prof ['club']
-			        print (prof ['name'], ' | ', club ['teg'], ' | ', prof ['trophies'], ' | ', prof ['brawlers'])
-			
-			proxy = create_proxy(on_button_click)
-			document.getElementById("MyButton").addEventListener("click", proxy)
-		</script>
-	<py-script>
+	<script>
+		npm install brawlstats
+		const BrawlStars = require('brawlstats');
+		const client = new BrawlStars.Client('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImY3NjkwZmY5LTRmMDgtNGMyOS1iODdmLTBmNzhlY2EyMzg1ZCIsImlhdCI6MTczMzU2NDQ5OSwic3ViIjoiZGV2ZWxvcGVyLzkxOTJhMTM4LTAzZmQtNWFkNy1iNjFkLWNkNzU1NGE0NmIyMyIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcnMiOlsiNS41My4xMTMuMjAxIl0sInR5cGUiOiJjbGllbnQifV19.tkrpGkqeo5YNpIJNFaqqRnhk1YqeC1DCi-YJivqzcZIjIht1dQtlvbhFiIlq_g-7LeLU0fddjHP7WNqusLA5QQ');
+		
+    	function x() {     
+   		var teg_id = document.getElementById ('inf').value
+		client.getPlayer('inf')
+		.then(player => {
+        		console.log(player);
+		})
+    		.catch(error => {
+        		console.error(error);
+    		});
+
+    	}
+	</script>
 	</div>
 	
 </body>
