@@ -48,20 +48,26 @@
 		
 	<script>
     	function x() { 
-		import brawlstats
-		const BrawlStars = require('brawlstats');
-		const client = new BrawlStars.Client('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImY3NjkwZmY5LTRmMDgtNGMyOS1iODdmLTBmNzhlY2EyMzg1ZCIsImlhdCI6MTczMzU2NDQ5OSwic3ViIjoiZGV2ZWxvcGVyLzkxOTJhMTM4LTAzZmQtNWFkNy1iNjFkLWNkNzU1NGE0NmIyMyIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcnMiOlsiNS41My4xMTMuMjAxIl0sInR5cGUiOiJjbGllbnQifV19.tkrpGkqeo5YNpIJNFaqqRnhk1YqeC1DCi-YJivqzcZIjIht1dQtlvbhFiIlq_g-7LeLU0fddjHP7WNqusLA5QQ');
 		
-   		var teg_id = document.getElementById ('inf').value
-		client.getPlayer('inf')
-		.then(player => {
-        		console.log(player);
-		})
-    		.catch(error => {
-        		console.error(error);
-    		});
+        	const API_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImY3NjkwZmY5LTRmMDgtNGMyOS1iODdmLTBmNzhlY2EyMzg1ZCIsImlhdCI6MTczMzU2NDQ5OSwic3ViIjoiZGV2ZWxvcGVyLzkxOTJhMTM4LTAzZmQtNWFkNy1iNjFkLWNkNzU1NGE0NmIyMyIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcnMiOlsiNS41My4xMTMuMjAxIl0sInR5cGUiOiJjbGllbnQifV19.tkrpGkqeo5YNpIJNFaqqRnhk1YqeC1DCi-YJivqzcZIjIht1dQtlvbhFiIlq_g-7LeLU0fddjHP7WNqusLA5QQ';
+        	const PLAYER_TAG = document.getElementById ('inf').value;
 
-    	}
+        async function getPlayerInfo() {
+            const response = await fetch(`https://api.brawlstars.com/v1/players/%23${PLAYER_TAG}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${API_TOKEN}`,
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById('player-info').innerText = JSON.stringify(data, null, 2);
+            } else {
+                console.error('Error fetching player info:', response.status, response.statusText);
+            }
+        }
 	</script>
 	</div>
 	
