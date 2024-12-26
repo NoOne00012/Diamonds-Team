@@ -5,6 +5,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Symbols:wght@100..900&display=swap" rel="stylesheet">
+	<script src="https://telegram.org/js/telegram-web-app.js?56"></script>
 </head>
 
 <style>
@@ -18,60 +19,23 @@
 		font-family: 'Montserrat', sans-serif;
 		font-size: 50px;
 		font-weight: bold;
-		border-radius: 20px;
-		color: black;	
+		border-radius: 15px;
+		color: white;	
 		margin-left: auto; margin-right: auto;
+		background: var(--tg-theme-bg-color);
 		display: block;
 	}
 
-	input {
-		font-family: 'Montserrat', sans-serif;
-		font-size: 50px;
-		border-radius: 20px;
-		color: black;
-		margin-left: auto; margin-right: auto;
-		display: block;
-	}
 </style>
 
 <body>    
-	<link rel="stylesheet" href="https://pyscript.net/releases/2024.10.2/core.css">
-	<script type="module" src="https://pyscript.net/releases/2024.10.2/core.js"></script>
 	<div>
 	<img
 		src="./DT.jpg"
 		alt="Diamonds Team иконка"
 		width="40%"><br>
 
-	<input id = 'inf' placeholder = 'Введи свой тег-id'><br>
-	<button id = 'MyButton' onclick = 'x()'>Ввести</button>
-		
-	<script>
-    	function x() { 
-		
-        	const API_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImY3NjkwZmY5LTRmMDgtNGMyOS1iODdmLTBmNzhlY2EyMzg1ZCIsImlhdCI6MTczMzU2NDQ5OSwic3ViIjoiZGV2ZWxvcGVyLzkxOTJhMTM4LTAzZmQtNWFkNy1iNjFkLWNkNzU1NGE0NmIyMyIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcnMiOlsiNS41My4xMTMuMjAxIl0sInR5cGUiOiJjbGllbnQifV19.tkrpGkqeo5YNpIJNFaqqRnhk1YqeC1DCi-YJivqzcZIjIht1dQtlvbhFiIlq_g-7LeLU0fddjHP7WNqusLA5QQ';
-        	const PLAYER_TAG = document.getElementById ('inf').value;
-
-        async function getPlayerInfo() {
-            const response = await fetch(`https://api.brawlstars.com/v1/players/%23${PLAYER_TAG}`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${API_TOKEN}`,
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                document.getElementById('player-info').innerText = JSON.stringify(data, null, 2);
-            } else {
-                console.error('Error fetching player info:', response.status, response.statusText);
-            }
-        }
-	getPlayerInfo();
-	}
-	
-	</script>
+	<button id = 'MyButton' onclick = 'x()'>Продолжить</button>
 	</div>
 	
 </body>
