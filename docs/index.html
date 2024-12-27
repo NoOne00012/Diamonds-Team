@@ -17,8 +17,7 @@
             const playerId = document.getElementById('playerId').value;
             axios.get(`/player?id=${playerId}`)
                 .then(response => {
-                    console.log('Ник:', response.data.name);
-                    console.log('Кубки:', response.data.trophies);
+                    console.log(response.data);
                 })
                 .catch(error => {
                     console.error('Ошибка:', error);
@@ -27,5 +26,6 @@
     </script>
 </body>
 </html>
+
 
 
