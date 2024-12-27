@@ -75,7 +75,7 @@
 		padding: 10px 20px;
 		width: 350px;
 		height: 60px;
-
+	}
 </style>
 
 <body>    
@@ -93,16 +93,20 @@
 		<button id = 'MyButton' onclick = 'x()'>Продолжить</button>
 	</div>
 	</div>
+
+	<div id = 'block2'>
+		<h1>Авторизация</h1>
+		<p>Для того, чтобы пройти дальше, тебе нужно ввести свой игровой тег-ID.</p><br>
+	<div class = 'n'>
+		<input placeholder = '#EXAMPLE'><br>
+		<button>Авторизоваться</button>
+	</div>
+	</div>
+
 	<script>
 		let tg = window.Telegram.WebApp;
 		tg.expand();
 	</script>
 
-	<div>
-		<h1>Авторизация</h1>
-		<p>Для того, чтобы пройти дальше, тебе нужно ввести свой игровой тег-ID.</p><br>
-		<input placeholder = '#EXAMPLE'><br>
-		<button>Авторизоваться</button>
-	</div>
 </body>
 </html>	
