@@ -116,7 +116,7 @@
 	
 	<div id = 'bst1'>
 		<p class = 'p'>Добро пожаловать в наш альянс! Общайся, заводи новые знакомства, транслируй игры, делись полезными советами, и не только! Каждый участник может найти здесь поддержку и дружбу.<br>Стань же частью нашей дружной семьи Diamonds Team!</p>
-		<button id = 'MyButton' onclick = 'x()'>Продолжить</button>
+		<button id = 'prodol' onclick = 'x()'>Продолжить</button>
 	</div>
 	</div>
 
@@ -131,6 +131,11 @@
 	</div>
 
 	<script>
+		function x() {
+			document.getElementById ('block1').style.display = 'none';
+			document.getElementById ('block2').style.display = 'block';
+		}
+			
 		let tg = window.Telegram.WebApp;
 		tg.expand();
 	</script>
