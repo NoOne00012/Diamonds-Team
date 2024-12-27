@@ -15,7 +15,7 @@
     <script>
         function getPlayerInfo() {
             const playerId = document.getElementById('playerId').value;
-            axios.get(`http://localhost:3000/player/${playerId}`)
+            axios.get(`/player?id=${playerId}`)
                 .then(response => {
                     console.log('Ник:', response.data.name);
                     console.log('Кубки:', response.data.trophies);
@@ -27,4 +27,5 @@
     </script>
 </body>
 </html>
+
 
