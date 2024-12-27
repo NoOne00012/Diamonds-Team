@@ -18,9 +18,6 @@
             axios.get(`/player?id=${playerId}`)
                 .then(response => {
                     console.log(response.data);
-                })
-                .catch(error => {
-                    console.error('Ошибка:', error);
                 });
         }
     </script>
