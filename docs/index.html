@@ -176,13 +176,13 @@
 					.then(response => {
 						var icon = document.getElementById('icon');
 						icon.src = response.data;
-					}
+					});
 
 					axios.get('https://noone0001.pythonanywhere.com/name/' + g1)
 					.then(response => {
 						var nick = document.getElementById('nick');
 						nick.innerHTML = response.data
-					}
+					});
 						
 					document.getElementById ('block2').style.display = 'none';
 					document.getElementById ('block3').style.display = 'block';
@@ -190,7 +190,7 @@
 					var er = document.getElementById ('prover');
 					er.innerHTML = 'Некорректный тег-ID. Попробуй ещё раз.'
 				}
-			}
+			});
 		}
 
 	</script>
