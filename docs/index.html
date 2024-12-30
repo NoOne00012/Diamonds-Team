@@ -186,7 +186,7 @@
 						
 					document.getElementById ('block2').style.display = 'none';
 					document.getElementById ('block3').style.display = 'block';
-				} else {
+				} else if (response.data === 'false') {
 					var er = document.getElementById ('prover');
 					er.innerHTML = 'Некорректный тег-ID. Попробуй ещё раз.'
 				}
