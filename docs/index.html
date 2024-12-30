@@ -134,9 +134,20 @@
 		<h1>Авторизация</h1>
 	<div class = 'n' id = 'b'>
 		<p id = 'p1'>Для того, чтобы пройти дальше, тебе нужно ввести свой игровой тег-ID.</p>
-		<input placeholder = '#EXAMPLE'><br>
-		<button>Авторизоваться</button>
+		<input id = 'avt' placeholder = '#EXAMPLE' value = '#'><br>
+		<button onclick = 'y()'>Авторизоваться</button>
 	</div>
+		<p id = 'prover'></p>
+	</div>
+
+	<div id = 'block3'>
+		<img id = 'icon' src = ''><br>
+
+		<h1 id = 'nick''></h1><br>
+		
+
+		<button id = 'yes'>Да</button><br>
+		<button id = 'no'>Нет</button>
 	</div>
 
 	<script>
@@ -144,7 +155,35 @@
 			document.getElementById ('block1').style.display = 'none';
 			document.getElementById ('block2').style.display = 'block';
 		}
-			
+
+		function y() {
+			var g = document.getElementById ('avt').value;
+			var g1 = g.substring(1);
+			axios.get('https://noone0001.pythonanywhere.com/' + g1)
+			.then(response => {
+				if (response.data === true) {
+					axios.get('https://noone0001.pythonanywhere.com/icon/' + g1)
+					.then(response => {
+						var icon = document.getElementById('icon');
+						icon.src = response.data;
+					}
+
+					axios.get('https://noone0001.pythonanywhere.com/name/' + g1)
+					.then(response => {
+						var nick = document.getElementById('nick');
+						nick.innerHTML = response.data
+					}
+						
+					document.getElementById ('block2').style.display = 'none';
+					document.getElementById ('block3').style.display = 'block';
+				} else {
+					var er = document.getElementById ('prover');
+					er.innerHTML = 'Некорректный тег-ID. Попробуй ещё раз.'
+				}
+			}
+		}
+
+		
 		let tg = window.Telegram.WebApp;
 		tg.expand();
 	</script>
