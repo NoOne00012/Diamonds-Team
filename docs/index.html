@@ -225,7 +225,7 @@
 			else if (g.includes ('#')) {
 				axios.get('https://noone0001.pythonanywhere.com/profile/' + g1)
 				.then(response => {
-					var zapr = response.data
+					zapr = response.data
 					if (response.data.status === 'tr') {
 						var icon = document.getElementById('icon');
 						icon.src = response.data.icon;
