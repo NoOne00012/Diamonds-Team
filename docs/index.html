@@ -177,12 +177,13 @@
 			<h1 id = 'nick''></h1>
 		</div>
 
-		<div class = 'p' id = 'igr'>
+		<div class = 'p'>
 			<p class = 'p'>Это твой игровой аккаунт?</p>
 		
 			<button onclick = 'z()'>Да</button>
 			<button id = 'no'>Нет</button>
 		</div>
+	</div>
 
 		<div id = 'false_club'>
 			<h1>Ты уверен?</h1>
@@ -249,7 +250,7 @@
 		
 		function z() {
 			if (zapr.club === 'Green Diamond' || zapr.club === 'Red Diamonds' || zapr.club === 'Blue Diamonds' || zapr.club === 'Pink Diamonds') {
-				document.getElementById ('igr').style.display = 'none';
+				document.getElementById ('block3').style.display = 'none';
 				document.getElementById ('block4').style.display = 'block';
 			} else {
 
