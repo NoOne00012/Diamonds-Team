@@ -182,22 +182,27 @@
 		function y() {
 			var g = document.getElementById ('avt').value;
 			var g1 = g.substring(1);
-			axios.get('https://noone0001.pythonanywhere.com/profile/' + g1)
-			.then(response => {
-				if (response.data.status === 'tr') {
-					var icon = document.getElementById('icon');
-					icon.src = response.data.icon;
-
-					var nick = document.getElementById('nick');
-					nick.innerHTML = response.data.name;
-						
-					document.getElementById ('block2').style.display = 'none';
-					document.getElementById ('block3').style.display = 'block';
-				} else {
-					var er = document.getElementById ('prover');
-					er.innerHTML = '*Некорректный тег-ID. Попробуй ещё раз.'
-				}
-			});
+			if (g.includes ('#') {
+				axios.get('https://noone0001.pythonanywhere.com/profile/' + g1)
+				.then(response => {
+					if (response.data.status === 'tr') {
+						var icon = document.getElementById('icon');
+						icon.src = response.data.icon;
+	
+						var nick = document.getElementById('nick');
+						nick.innerHTML = response.data.name;
+							
+						document.getElementById ('block2').style.display = 'none';
+						document.getElementById ('block3').style.display = 'block';
+					} else {
+						var er = document.getElementById ('prover');
+						er.innerHTML = '*Некорректный тег-ID. Попробуй ещё раз.'
+					}
+				});
+			} else {
+				var er = document.getElementById ('prover');
+				er.innerHTML = '*Игровой тег-ID должен содержать символ "#".'
+			}
 		}
 
 	</script>
