@@ -134,6 +134,10 @@
 		background-color: red;
 	}
 
+	#false_club {
+		display: none;
+	}
+
 	
 </style>
 
@@ -169,12 +173,31 @@
 			<h1 id = 'nick''></h1>
 		</div>
 
-		<div class = 'p'>
+		<div class = 'p' id = 'igr'>
 			<p class = 'p'>Это твой игровой аккаунт?</p>
 		
-			<button id = 'yes'>Да</button>
+			<button onclick = 'z()'>Да</button>
 			<button id = 'no'>Нет</button>
 		</div>
+
+		<div id = 'false_club'>
+			<h1>Ты уверен?</h1>
+			<p>Судя по данным твоего игрового аккаунта, ты не являешься участником альянса Diamonds Team.<br>Всё ровно хочешь продолжить вступление?</p>
+			<button>Продолжить</button>
+			<button>Отмена</button>
+		</div>
+
+		<div id = 'block4'>
+			<h1>Правила</h1>
+			<p class = 'p'>Следующим пунктом вступления являются правила альянса. Этот этап особенно важен, так как незнание правил может повлечь за собой последствия. За нарушение какого-либо пункта в них ты можешь получить мут или же, в крайнем случае, бан. Пожалуйста, ознакомся с ними.</p>
+			<button type = 'checkbox'></button>
+			<span>Я ознакомился(-ась) с правилами. 
+			<button type = 'checkbox'></button>
+			<span>В случае чего, я беру всю ответстенность за свои действия.</span>
+			<button>Продолжить</button>
+		</div>
+
+		
 	</div>
 
 	<script>
@@ -198,6 +221,7 @@
 			else if (g.includes ('#')) {
 				axios.get('https://noone0001.pythonanywhere.com/profile/' + g1)
 				.then(response => {
+					var zapr = response.data
 					if (response.data.status === 'tr') {
 						var icon = document.getElementById('icon');
 						icon.src = response.data.icon;
@@ -212,12 +236,21 @@
 						er.innerHTML = '*Некорректный тег-ID. Попробуй ещё раз.'
 					}
 				});
+				
 			} else {
 				var er = document.getElementById ('prover');
 				er.innerHTML = '*Игровой тег-ID должен содержать символ "#".'
 			}
 		}
+		
+		function z() {
+			if (zapr.club === 'Green Diamond' || zapr.club === 'Red Diamonds' || zapr.club === 'Blue Diamonds' || zapr.club === 'Pink Diamonds') {
+				document.getElementById ('igr').style.display = 'none';
+				document.getElementById ('block4').style.display = 'block';
+			} else {
 
+			}
+		}
 	</script>
 
 </body>
