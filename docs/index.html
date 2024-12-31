@@ -182,7 +182,7 @@
 		function y() {
 			var g = document.getElementById ('avt').value;
 			var g1 = g.substring(1);
-			if (g.includes ('#') {
+			if (g.includes ('#')) {
 				axios.get('https://noone0001.pythonanywhere.com/profile/' + g1)
 				.then(response => {
 					if (response.data.status === 'tr') {
