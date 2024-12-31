@@ -92,6 +92,7 @@
 		color: var(--tg-theme-text-color);
 		font-family: 'Roboto', Arial;
 		font-size: 20px;
+		text-transform: uppercase;
 	}
 
 	hr {
@@ -150,6 +151,7 @@
 		<h1>Авторизация</h1>
 	<div class = 'n' id = 'b'>
 		<p id = 'p1'>Для того, чтобы пройти дальше, тебе нужно ввести свой игровой тег-ID.</p>
+		<span> #</span><span> | </span>
 		<input id = 'avt' placeholder = '#EXAMPLE' value = '#'><br>
 		<button onclick = 'y()'>Авторизоваться</button>
 	</div>
@@ -158,14 +160,16 @@
 
 	<div id = 'block3'>
 		<div class = 'n'>
-			<img id = 'icon' src = '' alt = 'иконка' onerror="this.onerror=null;this.src='https://cdn.brawlfind.com/profiles/28000000.png'">
+			<img id = 'icon' src = ''>
 			<h1 id = 'nick''></h1>
 		</div>
+
+		<div class = 'p'>
+			<p>Это твой игровой аккаунт?</p>
 		
-		<p class = 'p'>Это твой игровой аккаунт?</p>
-		
-		<button id = 'yes'>Да</button>
-		<button id = 'no'>Нет</button>
+			<button id = 'yes'>Да</button>
+			<button id = 'no'>Нет</button>
+		</div>
 	</div>
 
 	<script>
