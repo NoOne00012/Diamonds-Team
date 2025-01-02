@@ -244,6 +244,7 @@
 
 	<script>
 		const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-secondary-bg-color').trim();
+		console.log ('Разделитель')
 		console.log(bgColor);
 	
 		const bg = getComputedStyle(document.documentElement).getPropertyValue ('--tg-theme-secondary-bg-color');
@@ -258,6 +259,7 @@
 		if (bg1 === bg2) {
 			document.querySelector('button').style.setProperty('color', 'black');
 		}
+		
 	</script>
 	
 	<script>
