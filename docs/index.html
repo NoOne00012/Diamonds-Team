@@ -218,7 +218,7 @@
 			<p class = 'p'>Это твой игровой аккаунт?</p>
 		
 			<button onclick = 'z()'>Да</button>
-			<button id = 'no'>Нет</button>
+			<button onclick = 'z1()>Нет</button>
 		</div>
 	</div>
 
@@ -239,10 +239,9 @@
 			<button>Продолжить</button>
 		</div>
 
-		
+		<div id = 'et'><br><p id = 'etap'>1 из 3</p></div>
+	
 	</div>
-
-	<div id = 'et'><br><p id = 'etap'>1 из 3</p></div>
 
 	<script>
 		function x() {
@@ -315,6 +314,12 @@
 				
 			}
 		}
+
+		function z1() {
+			document.getElementById ('block3').style.display = 'none';
+			document.getElementById ('block2').style.display = 'block';
+		}
+		
 	</script>
 
 </body>
