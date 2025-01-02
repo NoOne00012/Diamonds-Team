@@ -185,6 +185,9 @@
 </style>
 
 <script>
+	const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-secondary-bg-color').trim();
+	console.log(bgColor); // Вывод значения переменной
+
 	const bg = getComputedStyle(document.documentElement).getPropertyValue ('--tg-theme-secondary-bg-color');
 	const bg1 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-bg-color');
 	if (bg === bg1) {
@@ -195,7 +198,7 @@
 
 	const bg2 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-text-color');
 	if (bg1 === bg2) {
-			document.querySelector('button').style.setProperty('color', 'black');
+		document.querySelector('button').style.setProperty('color', 'black');
 	}
 </script>
 
