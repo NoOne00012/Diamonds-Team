@@ -221,8 +221,8 @@
 		<div id = 'false_club'>
 			<h1>Ты уверен?</h1>
 			<p>Судя по данным твоего игрового аккаунта, ты не являешься участником альянса Diamonds Team.<br>Всё ровно хочешь продолжить вступление?</p>
-			<button>Продолжить</button>
-			<button>Отмена</button>
+			<button onclick = 'b()'>Продолжить</button>
+			<button onclick = 'b1()'>Отмена</button>
 		</div>
 
 		<div id = 'block4'>
@@ -231,10 +231,6 @@
 			<label class = 'span'>
 				<input type = 'checkbox' class = 'checkbox'></input>
 				<span>Я ознакомился(-ась) с правилами.</span>
-			</label>
-			<label class = 'span'>
-				<input type = 'checkbox' class = 'checkbox'></input>
-				<span>Я беру всю ответственность за свои</span>
 			</label>
 			<button>Продолжить</button>
 		</div>
@@ -258,7 +254,16 @@
 				y();
 			}
 		}
-		
+
+		function b() {
+			document.getElementById ('false_club').style.display = 'none';
+			document.getElementById ('block4').style.display = 'block';
+		}
+
+		function b1() {
+			Telegram.WebApp.close();
+		}
+			
 		function y() {
 			var g = document.getElementById ('avt').value;
 			var g1 = g.substring(1);
@@ -296,7 +301,9 @@
 				document.getElementById ('block3').style.display = 'none';
 				document.getElementById ('block4').style.display = 'block';
 			} else {
-
+				document.getElementById ('block3').style.display = 'none';
+				document.getElementById ('false_club').style.display = 'block';
+				
 			}
 		}
 	</script>
