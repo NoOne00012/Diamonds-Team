@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <title>Блокировка изменения масштаба</title>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<meta name="mobile-web-app-capable" content="yes">
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
 </head>
 
 <style>
@@ -184,6 +184,21 @@
 	
 </style>
 
+<script>
+	const bg = getComputedStyle(document.documentElement).getPropertyValue ('--tg-theme-secondary-bg-color');
+	const bg1 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-bg-color');
+	if (bg === bg1) {
+		const color = tinycolor(bg1).darken(20).toString();
+		document.querySelector('.n').style.setProperty('color', color);
+		document.querySelector('.p').style.setProperty('color', color);
+	}
+
+	const bg2 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-text-color');
+	if (bg1 === bg2) {
+			document.querySelector('button').style.setProperty('color', 'black');
+	}
+</script>
+
 <body>    
 	<div id = 'block1'>
 	<div class = 'n' id = 'bst'>
@@ -241,7 +256,7 @@
 		<button>Продолжить</button>
 		<br><div id = 'et'><p id = 'etap'>1 из 3</p></div>
 	</div>
-
+	
 	<script>
 		function x() {
 			document.getElementById ('block1').style.display = 'none';
