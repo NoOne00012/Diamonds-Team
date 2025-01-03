@@ -277,8 +277,12 @@
 		const bg2 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-button-color');
 		const bg3 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-text-color');
 		if (bg3 === bg2) {
-			const buttons = document.querySelectorAll('button');
-        		buttons.style.setProperty('color', 'black');
+			document.addEventListener('DOMContentLoaded', () => {
+				const buttons = document.querySelectorAll('button');
+        			buttons.forEach(button => {
+        				button.style.setProperty('color', 'black');
+    				});
+			});
 		}
 		
 	</script>
