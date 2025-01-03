@@ -255,7 +255,7 @@
 		const bg1 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-bg-color');
 		
 		if (bg === bg1) {
-			const color = tinycolor(bg1).darken(10).toString();
+			const color = tinycolor(bg1).darken(5).toString();
 			if (Telegram.WebApp.colorScheme === 'dark') {
 				document.addEventListener('DOMContentLoaded', () => {
 	    				const elements = document.querySelectorAll('.n');
