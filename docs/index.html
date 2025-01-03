@@ -13,6 +13,14 @@
 </head>
 
 <style>
+	:root {
+		--tg-theme-secondary-bg-color: var(--tg-theme-secondary-bg-color);
+		--tg-theme-text-color: var(--tg-theme-text-color);
+		--tg-theme-button-color: var(--tg-theme-button-color);
+		--tg-theme-text-color: var(--tg-theme-text-color);
+		
+	}
+	
 	body {
 		justify-content: center;
 		align-items: center;
@@ -254,9 +262,10 @@
 			document.querySelector('.n').style.setProperty('color', color);
 			document.querySelector('.p').style.setProperty('color', color);
 		}
-	
-		const bg2 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-text-color');
-		if (bg1 === bg2) {
+
+		const bg2 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-button-color');
+		const bg3 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-text-color');
+		if (bg3 === bg2) {
 			document.querySelector('button').style.setProperty('color', 'black');
 		}
 		
