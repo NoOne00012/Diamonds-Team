@@ -258,15 +258,31 @@
 		const bg = getComputedStyle(document.documentElement).getPropertyValue ('--tg-theme-secondary-bg-color');
 		const bg1 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-bg-color');
 		if (bg === bg1) {
-			const color = tinycolor(bg1).darken(20).toString();
-			document.querySelector('.n').style.setProperty('background-color', color);
-			document.querySelector('.p').style.setProperty('background-color', color);
+			const color = tinycolor(bg1).darken(15).toString();
+			
+			document.addEventListener('DOMContentLoaded', () => {
+    				const elements = document.querySelectorAll('.n');
+    				elements.forEach(element => {
+        				element.style.setProperty('background-color', color);
+    				});
+				
+				const elements = document.querySelectorAll('.p');
+				elements.forEach(element => {
+        				element.style.setProperty('background-color', color);
+    				});
+			});
+
 		}
 
 		const bg2 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-button-color');
 		const bg3 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-text-color');
 		if (bg3 === bg2) {
-			document.querySelector('button').style.setProperty('color', 'black');
+			const buttons = document.querySelectorAll('button');
+
+			buttons.forEach(button => {
+        				button.style.setProperty('color', 'black');
+    				});
+			});
 		}
 		
 	</script>
