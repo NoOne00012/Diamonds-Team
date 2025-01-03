@@ -259,8 +259,8 @@
 		const bg1 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-bg-color');
 		if (bg === bg1) {
 			const color = tinycolor(bg1).darken(20).toString();
-			document.querySelector('.n').style.setProperty('color', color);
-			document.querySelector('.p').style.setProperty('color', color);
+			document.querySelector('.n').style.setProperty('background-color', color);
+			document.querySelector('.p').style.setProperty('background-color', color);
 		}
 
 		const bg2 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-button-color');
