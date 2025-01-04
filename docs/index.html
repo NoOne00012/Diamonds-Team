@@ -304,24 +304,26 @@
 		}
 		
 		if (Telegram.WebApp.platform === 'ios') {
-			document.addEventListener('DOMContentLoaded', () => {
-	    			const elements = document.querySelectorAll('.n');
-	    			elements.forEach(element => {
-	        			element.style.setProperty('background-color', bg);
-	    			});
-					
-				const elements1 = document.querySelectorAll('.p');
-				elements1.forEach(element => {
-	        			element.style.setProperty('background-color', bg);
-	    			});
-			});
-
-			document.addEventListener('DOMContentLoaded', () => {
-	    			const elements = document.querySelectorAll('body');
-	    			elements.forEach(element => {
-	        			element.style.setProperty('background-color', bg1);
-	    			});
-			});
+			if (Telegram.WebApp.colorScheme === 'dark') {
+				document.addEventListener('DOMContentLoaded', () => {
+		    			const elements = document.querySelectorAll('.n');
+		    			elements.forEach(element => {
+		        			element.style.setProperty('background-color', bg);
+		    			});
+						
+					const elements1 = document.querySelectorAll('.p');
+					elements1.forEach(element => {
+		        			element.style.setProperty('background-color', bg);
+		    			});
+				});
+	
+				document.addEventListener('DOMContentLoaded', () => {
+		    			const elements = document.querySelectorAll('body');
+		    			elements.forEach(element => {
+		        			element.style.setProperty('background-color', bg1);
+		    			});
+				});
+			}
 		}
 	
 	</script>
