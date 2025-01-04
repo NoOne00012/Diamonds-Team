@@ -256,9 +256,12 @@
 	</div>
 
 	<script>
-		Telegram.WebApp.onEvent ('viewportChanged', () => {
-    			location.reload();
+		document.addEventListener('visibilitychange', () => {
+    			if (document.visibilityState === 'visible') {
+        			location.reload();
+    			}
 		});
+		
 	</script>
 	
 	<script>
