@@ -343,15 +343,6 @@
 			document.getElementById ('block1').style.display = 'none';
 			document.getElementById ('block2').style.display = 'block';
 			document.getElementById ('et').style.display = 'block';
-			
-			const input = document.getElementById('block2');
-			input.addEventListener('focus', () => {
-			    document.body.style.height = `${window.innerHeight}px`;
-			});
-			input.addEventListener('blur', () => {
-			    document.body.style.height = 'auto';
-			});
-
 		}
 
 		let tg = window.Telegram.WebApp;
