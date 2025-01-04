@@ -32,8 +32,6 @@
 		font-size: 20px;
 		background-color: var(--tg-theme-secondary-bg-color);
 		user-select: none;
-		margin-left: 15px;
-		margin-right: 15px;
 	}
 	
 	img {
@@ -194,6 +192,12 @@
 	#et {
 		display: none;
 	}
+
+	@media (min-width: 650px) and (max-width: 1000px) { 
+		body {
+			zoom: 0.96;
+		}
+	}
 		
 </style>
 
@@ -254,15 +258,6 @@
 		<button>Продолжить</button>
 		<br><div id = 'et'><p id = 'etap'>1 из 3</p></div>
 	</div>
-
-	<script>
-		document.addEventListener('visibilitychange', () => {
-    			if (document.visibilityState === 'visible') {
-        			location.reload();
-    			}
-		});
-		
-	</script>
 	
 	<script>
 		const bg = getComputedStyle(document.documentElement).getPropertyValue ('--tg-theme-secondary-bg-color');
