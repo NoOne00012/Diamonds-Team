@@ -258,8 +258,11 @@
 	<script>
 		const bg = getComputedStyle(document.documentElement).getPropertyValue ('--tg-theme-secondary-bg-color');
 		const bg1 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-bg-color');
+
+		const bg2 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-button-color');
+		const bg3 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-text-color');
 		
-		if (bg === bg1) {
+		function tema () {
 			const color = tinycolor(bg1).darken(5).toString();
 			if (Telegram.WebApp.colorScheme === 'dark') {
 				document.addEventListener('DOMContentLoaded', () => {
@@ -282,10 +285,8 @@
 				});
 			}
 		}
-
-		const bg2 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-button-color');
-		const bg3 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-text-color');
-		if (bg3 === bg2) {
+		
+		function tema1 () {
 			document.addEventListener('DOMContentLoaded', () => {
 				const buttons = document.querySelectorAll('button');
         			buttons.forEach(button => {
@@ -293,7 +294,36 @@
     				});
 			});
 		}
+
+		if (bg === bg1) {
+			tema ();
+		}
+			
+		if (bg3 === bg2) {
+			tema1 ();
+		}
 		
+		if (Telegram.WebApp.platform === 'ios') {
+			document.addEventListener('DOMContentLoaded', () => {
+	    			const elements = document.querySelectorAll('.n');
+	    			elements.forEach(element => {
+	        			element.style.setProperty('background-color', bg);
+	    			});
+					
+				const elements1 = document.querySelectorAll('.p');
+				elements1.forEach(element => {
+	        			element.style.setProperty('background-color', bg);
+	    			});
+			});
+
+			document.addEventListener('DOMContentLoaded', () => {
+	    			const elements = document.querySelectorAll('body');
+	    			elements.forEach(element => {
+	        			element.style.setProperty('background-color', bg1);
+	    			});
+			});
+		}
+	
 	</script>
 	
 	<script>
