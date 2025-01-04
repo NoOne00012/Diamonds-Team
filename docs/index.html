@@ -191,10 +191,6 @@
 	div {
 		max-width: 450px;
 	}
-
-	#et {
-		display: none;
-	}
 		
 </style>
 
@@ -254,7 +250,6 @@
 			<span>Я ознакомился(-ась) с правилами.</span>
 		</label>
 		<button>Продолжить</button>
-		<br><div id = 'et'><p id = 'etap'>1 из 3</p></div>
 	</div>
 
 	<script>
@@ -341,7 +336,6 @@
 		function x() {
 			document.getElementById ('block1').style.display = 'none';
 			document.getElementById ('block2').style.display = 'block';
-			document.getElementById ('et').style.display = 'block';
 		}
 
 		let tg = window.Telegram.WebApp;
@@ -400,8 +394,7 @@
 			if (zapr.club === 'Green Diamond' || zapr.club === 'Red Diamonds' || zapr.club === 'Blue Diamonds' || zapr.club === 'Pink Diamonds') {
 				document.getElementById ('block3').style.display = 'none';
 				document.getElementById ('block4').style.display = 'block';
-				etap = document.getElementById ('etap');
-				etap.innerHTML = '2 из 3';
+			
 			} else {
 				document.getElementById ('block3').style.display = 'none';
 				document.getElementById ('false_club').style.display = 'block';
