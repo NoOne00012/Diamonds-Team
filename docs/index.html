@@ -256,6 +256,12 @@
 	</div>
 
 	<script>
+		Telegram.WebApp.onEvent ('viewportChanged', () => {
+    			location.reload();
+		});
+	</script>
+	
+	<script>
 		const bg = getComputedStyle(document.documentElement).getPropertyValue ('--tg-theme-secondary-bg-color');
 		const bg1 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-bg-color');
 
