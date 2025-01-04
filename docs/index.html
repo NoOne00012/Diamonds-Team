@@ -256,6 +256,13 @@
 		<button>Продолжить</button>
 		<br><div id = 'et'><p id = 'etap'>1 из 3</p></div>
 	</div>
+
+	<script>
+		window.addEventListener('resize', () => {
+   			document.body.style.height = `${window.innerHeight}px`;
+		});
+
+	</script>
 	
 	<script>
 		const bg = getComputedStyle(document.documentElement).getPropertyValue ('--tg-theme-secondary-bg-color');
