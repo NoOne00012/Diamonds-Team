@@ -62,11 +62,11 @@
 		height: 60px;
 		display: block;
 		cursor: pointer;
-            	-webkit-transition: transform 0.5s
+            	transition: transform 0.5s
 	}
 
 	button:active {
-            -webkit-transform: scale(0.5)
+            transform: scale(0.5)
         }
 	
 	.n {
@@ -196,20 +196,22 @@
 	}
 
 	.blurred {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            -webkit-backdrop-filter: blur(20px);
-            display: none;
-            z-index: 1;
+        	position: absolute;
+	        top: 0;
+	        left: 0;
+	        width: 100%;
+	        height: 100%;
+		backdrop-filter: blur(20px);
+	        -webkit-backdrop-filter: blur(20px);
+	        display: none;
+	        z-index: 1;
         }
 
 	.overlay {
             position: absolute;
             top: 50%;
             left: 50%;
+	    transform: translate(-50%, -50%);
             -webkit-transform: translate(-50%, -50%);
             background-color: transparent;
             padding: 20px;
