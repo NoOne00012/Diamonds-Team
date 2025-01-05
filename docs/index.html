@@ -220,6 +220,17 @@
 	.butt {
             z-index: 3;
         }
+
+	.pp {
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		background-color: var(--tg-theme-bg-color);
+		border-radius: 15px;
+		padding: 5px;
+		margin: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+		opacity: 0.5;
+	}
 		
 </style>
 
@@ -253,9 +264,11 @@
 	<div class="blurred"></div>
 	<div id = 'false_club' class = 'overlay'>
 		<h1>Ты уверен?</h1>
-		<p>Судя по данным твоего игрового аккаунта, ты не являешься участником альянса Diamonds Team.<br>Всё ровно хочешь продолжить вступление?</p>
-		<button onclick = 'b()'>Продолжить</button>
-		<button onclick = 'b1()'>Отмена</button>
+		<div class = 'pp'>
+			<p>Судя по данным твоего игрового аккаунта, ты не являешься участником альянса Diamonds Team.<br>Всё ровно хочешь продолжить вступление?</p>
+			<button onclick = 'b()'>Продолжить</button>
+			<button onclick = 'b1()'>Отмена</button>
+		</div>
 	</div>
 	
 	<div id = 'block3' class = 'content'>
