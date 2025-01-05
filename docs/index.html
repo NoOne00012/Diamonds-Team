@@ -374,6 +374,11 @@
 		}
 
 		function b() {
+			const blurred = document.querySelector('.blurred');
+		        const overlay = document.querySelector('.overlay');
+		        blurred.style.display = 'none';
+		        overlay.style.display = 'none';
+		        overlay.style.filter = 'block';
 			document.getElementById ('block3').style.display = 'none';
 			document.getElementById ('false_club').style.display = 'none';
 			document.getElementById ('block4').style.display = 'block';
