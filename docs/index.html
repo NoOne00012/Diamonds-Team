@@ -155,10 +155,6 @@
 		background-color: red;
 	}
 
-	#false_club {
-		display: none;
-	}
-
 	#block4 {
 		display: none;
 	}
@@ -198,6 +194,32 @@
 		margin: 0;
 		padding: 0;
 	}
+
+	.blurred {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            display: none;
+            z-index: 1;
+        }
+
+	.overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: transparent;
+            padding: 20px;
+            display: none;
+            z-index: 2;
+        }
+
+	.butt {
+            z-index: 3;
+        }
 		
 </style>
 
@@ -227,25 +249,27 @@
 		<p id = 'prover' class = 'error'></p>
 	</div>
 
-	<div id = 'block3'>
+	
+	<div class="blurred"></div>
+	<div id = 'false_club' class = 'overlay'>
+		<h1>Ты уверен?</h1>
+		<p>Судя по данным твоего игрового аккаунта, ты не являешься участником альянса Diamonds Team.<br>Всё ровно хочешь продолжить вступление?</p>
+		<button onclick = 'b()'>Продолжить</button>
+		<button onclick = 'b1()'>Отмена</button>
+	</div>
+	
+	<div id = 'block3' class = 'content'>
 		<div class = 'n'>
 			<img id = 'icon' src = ''>
 			<h1 id = 'nick''></h1>
 		</div>
-
+		
 		<div class = 'p'>
 			<p class = 'pyst'>Это твой игровой аккаунт?</p>
 		
 			<button onclick = 'z()'>Да</button>
 			<button id = 'no'>Нет</button>
 		</div>
-	</div>
-
-	<div id = 'false_club'>
-		<h1>Ты уверен?</h1>
-		<p>Судя по данным твоего игрового аккаунта, ты не являешься участником альянса Diamonds Team.<br>Всё ровно хочешь продолжить вступление?</p>
-		<button onclick = 'b()'>Продолжить</button>
-		<button onclick = 'b1()'>Отмена</button>
 	</div>
 
 	<div id = 'block4'>
@@ -396,9 +420,14 @@
 				document.getElementById ('block4').style.display = 'block';
 			
 			} else {
-				document.getElementById ('block3').style.display = 'none';
-				document.getElementById ('false_club').style.display = 'block';
-				
+				// document.getElementById ('block3').style.display = 'none';
+				// document.getElementById ('false_club').style.display = 'block';
+		        	const blurred = document.querySelector('.blurred');
+		            	const overlay = document.querySelector('.overlay');
+		            	blurred.style.display = 'block';
+		            	overlay.style.display = 'block';
+		            	overlay.style.filter = 'none';
+			        
 			}
 		}
 		
