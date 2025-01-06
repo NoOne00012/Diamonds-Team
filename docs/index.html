@@ -237,6 +237,10 @@
 	#block5 {
 		display: none;
 	}
+
+	button:disabled {
+		background-color: var(--tg-theme-button-color);
+	}
 	
 </style>
 
@@ -380,7 +384,19 @@
 				});
 			}
 		} */
-	
+
+		
+		
+		function disabl () {
+			const color1 = tinycolor(bg2).darken(5).toString();
+			document.addEventListener('DOMContentLoaded', () => {
+				const buttons = document.querySelectorAll('button:disabled');
+        			buttons.forEach(button => {
+        				button.style.setProperty('background-color', color1);
+    				});
+			});
+		}
+		
 	</script>
 	
 	<script>
