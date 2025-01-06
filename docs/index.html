@@ -138,7 +138,7 @@
 	#bst1 {
 	}
 
-	#prodol {
+	.prodol {
 		width: 100%;
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	}
@@ -232,6 +232,10 @@
 		padding-left: 10px;
 		padding-right: 10px;
 	}
+
+	#block5 {
+		dispaly: none;
+	}
 	
 </style>
 
@@ -247,7 +251,7 @@
 	
 	<div>
 		<p class = 'p' id = 'bst1'>Добро пожаловать в наш альянс! Общайся, заводи новые знакомства, транслируй игры, делись полезными советами, и не только! Каждый участник может найти здесь поддержку и дружбу.<br>Стань же частью нашей дружной семьи Diamonds Team!</p>
-		<button id = 'prodol' onclick = 'x()'>Продолжить</button>
+		<button id = 'prodol' class = 'prodol' onclick = 'x()'>Продолжить</button>
 	</div>
 	</div>
 
@@ -292,10 +296,16 @@
 		<p class = 'p'>На этом этапе тебе необходимо ознакомиться с основными правилами нашего альянса. Это важно, чтобы в дальнейшем избежать ошибок, которые могут повлечь за собой последствия в виде наказаний. Мы стремимся создать дружелюбную и безопасную среду для всех участников, поэтому соблюдение правил является обязательным.
 После их прочтения, пожалуйста, подтверди, что ты ознакомился с ними, чтобы продолжить.</p>
 		<label class = 'span'>
-			<input type = 'checkbox' class = 'checkbox'>
+			<input type = 'checkbox' class = 'checkbox' id = 'zzz'>
 			<span>Я ознакомился(-ась) с правилами.</span>
 		</label>
-		<button disabled>Продолжить</button>
+		<button id = 'zzz1' disabled onclick = 'v()'>Продолжить</button>
+	</div>
+
+	<div id = 'block5'>
+		<h1>Финиш</h1>
+		<p class = 'p'>Поздравляю! Ты успешно прошел все этапы вступления в наш альянс. Остался последний шаг. Присоединяйся к нашему Telegram-чату, чтобы быть в курсе всех новостей и событий. Мы уверены, что вместе мы сможем достичь новых высот и преодолеть любые препятствия. Не упусти возможность стать частью нашего альянса! Нажми на ссылку ниже, чтобы присоединиться:</p>
+		<button url = 'https://t.me/diamondsteam_bs' class = 'prodol'>Вступить</button>
 	</div>
 	
 	<script>
@@ -450,6 +460,15 @@
 		            	overlay.style.filter = 'none';
 			        
 			}
+		}
+
+		document.getElementById('zzz').addEventListener('change', function() { 
+			document.getElementById('zzz1').disabled = !this.checked; 
+		});
+		
+		function v() {
+			document.getElementById ('block4').style.display = 'none';
+			document.getElementById ('block5').style.display = 'block';
 		}
 		
 	</script>
