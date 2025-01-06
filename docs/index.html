@@ -239,7 +239,6 @@
 	}
 
 	button:disabled {
-		color: grey;
 		background-color: var(--tg-theme-button-color);
 		cursor: not-allowed;
 		transition: 0;
@@ -396,26 +395,10 @@
 		
 		function disabl() {
 			const color1 = tinycolor(bg2).darken(20).toString();
-			document.addEventListener('DOMContentLoaded', () => {
-				const buttons = document.querySelectorAll('button:disabled');
-        			buttons.forEach(button => {
-        				button.style.setProperty('background-color', color1);
-    				});
-			});
+			document.getComputedStyle(button:disabled).backgroundColor = color1
 		}
 
 		disabl();
-
-		function enabl() {
-			document.addEventListener('DOMContentLoaded', () => {
-				const buttons = document.querySelectorAll('button:enabled');
-        			buttons.forEach(button => {
-        				button.style.setProperty('background-color', b2);
-    				});
-			});
-		}
-
-		enabl();
 		
 	</script>
 	
