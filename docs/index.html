@@ -405,6 +405,17 @@
 		}
 
 		disabl();
+
+		function enabl() {
+			document.addEventListener('DOMContentLoaded', () => {
+				const buttons = document.querySelectorAll('button:enabled');
+        			buttons.forEach(button => {
+        				button.style.setProperty('background-color', b2);
+    				});
+			});
+		}
+
+		enabl();
 		
 	</script>
 	
