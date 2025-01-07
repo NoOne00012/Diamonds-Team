@@ -10,6 +10,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<meta name="mobile-web-app-capable" content="yes">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
+	</style> <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <style>
@@ -252,7 +253,7 @@
 		box-shadow: none;
 		display: block;
 		z-index: 1;
-		display: none;
+		pointer-events: none;
 	}
 
 	#finish0 {
@@ -262,8 +263,6 @@
 </style>
 
 <body>    
-	<img src="https://i.gifer.com/6ob.gif" alt="GIF" class="gif" id = 'gif'>
-	
 	<div id = 'block1'>
 	<div class = 'n' id = 'bst'>
 	<img
@@ -327,6 +326,7 @@
 	</div>
 
 	<div id = 'block5'>
+		<convas id = 'gif'></convas>
 		<h1>Финиш</h1>
 		<p class = 'p'>Поздравляю! Ты успешно прошел все этапы вступления в наш альянс. Остался последний шаг. Присоединяйся к нашему Telegram-чату, чтобы быть в курсе всех новостей и событий. Мы уверены, что вместе мы сможем достичь новых высот и преодолеть любые препятствия. Не упусти возможность стать частью нашего альянса! Нажми на ссылку ниже, чтобы присоединиться:</p>
 		<button url = 'https://t.me/diamondsteam_bs' class = 'prodol' id = 'finish0'>Вступить</button>
@@ -492,8 +492,23 @@
 		
 		function v() {
 			document.getElementById ('block4').style.display = 'none';
-			document.getElementById ('gif').style.display = 'block';
 			document.getElementById ('block5').style.display = 'block';
+
+		function createConfetti() {
+            		confetti ({
+	                	particleCount: 50,
+	                	angle: 90,
+	                	spread: 90,
+	                	startVelocity: 60,
+	                	origin: { x: Math.random(), y: 0 },
+	                	ticks: 300,
+	                	gravity: 1,
+	                	colors: ['#ff5733', '#33ff57', '#3357ff', '#ff33a1', '#a133ff']
+	            	});
+        	}
+
+        // Создаем конфетти каждые 50 миллисекунд
+        setInterval(createConfetti, 100);
 		}
 		
 	</script>
