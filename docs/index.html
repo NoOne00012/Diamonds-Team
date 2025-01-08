@@ -529,12 +529,12 @@
         setInterval(createConfetti, 100);
 		}
 
-	finishh () {
+	finishh() {
 		Telegram.WebApp.close();
 		let data = {
 			stat: 'tr',
 			name: zapr.name,
-			club: zapr.club,
+			club: zapr.club
 		}
 
 		const tg = window.Telegram.WebApp;
