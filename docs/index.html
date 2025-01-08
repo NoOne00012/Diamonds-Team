@@ -538,7 +538,7 @@
 		}
 
 		const tg = window.Telegram.WebApp;
-		tg.sendData(data);
+		tg.sendData(JSON.stringify(data));
 		Telegram.WebApp.close();
 	}
 		
