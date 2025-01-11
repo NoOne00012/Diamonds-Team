@@ -269,7 +269,7 @@
 		margin-top: 0;
 	}
 
-	#zzz, #zzz2 {
+	#zzz2 {
 		margin-bottom: 0;
 	}
 	
@@ -327,14 +327,14 @@
 		</div>
 	</div>
 
-	<div id = 'block4'>
+	<div id = 'block4' id = 'zzz2'>
 		<a href = 'https://telegra.ph/DOBRO-POZHALOVAT-V-DIMONDS-TEAM-14-05-22' target="_blank"><h1>Правила</h1></a>
 		<p class = 'n' id = 'mmm'>На этом этапе тебе необходимо ознакомиться с основными правилами альянса. Это важно, чтобы в дальнейшем избежать ошибок, которые могут повлечь за собой последствия в виде наказаний. Мы стремимся создать дружелюбную и безопасную среду для всех участников, поэтому соблюдение правил является обязательным.
 Нажимая на галочку ниже, ты подтверждаешь своё ознакомление с правилами и их соблюдение</p>
 		<div class = 'p'>
 		<label class = 'span'>
 			<input type = 'checkbox' class = 'checkbox' id = 'zzz'>
-			<span id = 'zzz2'>Я подтверждаю.</span>
+			<span>Я подтверждаю.</span>
 		</label>
 		<button id = 'zzz1' disabled onclick = 'v()'>Продолжить</button>
 		</div>
@@ -527,7 +527,6 @@
 		}
 
 	function finishh() {
-		window.location.href = 'https://t.me/diamondsteam_bs';
 		let data = {
 			stat: 'tr',
 			name: zapr.name,
@@ -537,6 +536,7 @@
 		const tg = window.Telegram.WebApp;
 		tg.sendData(JSON.stringify(data));
 		Telegram.WebApp.close();
+		window.location.href = 'https://t.me/diamondsteam_bs';
 	}
 		
 	</script>
