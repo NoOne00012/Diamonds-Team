@@ -9,14 +9,13 @@
     <style>
         body {
             justify-content: center;
-            align-items: center;
             height: 100vh;
             text-align: center;
             display: flex;
             color: var(--tg-theme-text-color);
             font-family: 'Roboto', Arial;
             font-size: 20px;
-            background-color: rgb(224, 220, 220);
+            background-color: rgb(240, 240, 240);
             user-select: none;
             margin-left: 15px;
             margin-right: 15px;
@@ -76,27 +75,51 @@
             transition: 500ms;
         }
 
+        .div_pyst {
+            justify-content: none;
+            border-radius: 10px;
+            background-color: white;
+            padding: 10px;
+            min-width: 250px;
+            display: flex;
+            text-align: right;
+        }
+
+        p {
+        }
+
     </style>
 </head>
 <body>
     <div id = 'gl' onclick="pyst()">
-        <div class="zag">
+        <div class="div_pyst">
             <div class = 'ava'><img src = 'https://avatanplus.com/files/photos/mid/5ed4f2ff1b7441726fd53488.png' width="100%" height="100%"></div>
-            <h3 class = 'data'>Никнейм</h3>
-            <p class = 'data'>#YC9RYY9V0</p>
+            <p>♡ 𝑵𝒐 𝑶𝒏𝒆 ♡</p>
         </div>
     </div>
 
     <div id="menu">
         <img src = 'https://cdn-icons-png.flaticon.com/512/813/813670.png' width="8%" height="8%" class = 'menu_button'>
         <img src = 'https://cdn-icons-png.flaticon.com/512/3005/3005154.png' width="8%" height="8%" class = 'menu_button'>
-        <img src = 'https://cdn-icons-png.flaticon.com/512/262/262038.png' width="10%" height="10%" class = 'menu_button' onclick = 'plus()'>
+        <img src = 'https://cdn-icons-png.flaticon.com/512/262/262038.png' id = 'plus' width="10%" height="10%" class = 'menu_button' onclick = 'plus()'>
         <img src = 'https://cdn-icons-png.flaticon.com/512/149/149309.png' width="8%" height="8%" class = 'menu_button'>
         <img src = 'https://cdn-icons-png.flaticon.com/512/1159/1159740.png' width="8%" height="8%" class = 'menu_button'>
     </div>
 
     <script>
         function plus() {
+            const element = document.getElementById('plus')
+            element.style.transform = "translateY(-10px)";
+            element.style.transition = "0.2s";
+
+            setTimeout(() => {
+                element.style.transform = "translateY(5px)";
+
+                setTimeout(() => {
+                    element.style.transform = "translateY(0)";
+                }, 200);
+            }, 200);
+
             const menu = document.getElementById("menu");
             if (menu.style.paddingTop === '20px') {
                 menu.style.paddingTop = '200px';
@@ -106,6 +129,7 @@
                 menu.style.paddingTop = '20px';
                 const gl = document.getElementById("gl");
                 gl.style.filter = 'blur(0)';
+
             }
         }
 
