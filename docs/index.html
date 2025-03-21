@@ -4,16 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Разворачивающийся список</title>
-    	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Symbols:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-	<script src="https://telegram.org/js/telegram-web-app.js?56"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content, viewport-fit=cover">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <title>Блокировка изменения масштаба</title>
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<meta name="mobile-web-app-capable" content="yes">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
-	</style> <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
 
     <style>
@@ -25,7 +15,7 @@
             color: var(--tg-theme-text-color);
             font-family: 'Roboto', Arial;
             font-size: 20px;
-            background-color: var(--tg-theme-secondary-bg-color);
+            background-color: rgb(240, 240, 240);
             user-select: none;
             margin-left: 15px;
             margin-right: 15px;
@@ -37,12 +27,12 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: var(--tg-theme-button-color);
+            background-color: black;
             text-align: center;
             padding-top: 20px;
             padding-bottom: 10px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
             transition: 500ms;
 
         }
@@ -59,7 +49,7 @@
         }
 
         .ava {
-            border: 2px solid var(--tg-theme-button-color);
+            border: 2px solid rgb(221, 74, 111);
             width: 100px;
             height: 100px;
             overflow: hidden;
@@ -89,14 +79,31 @@
             justify-content: none;
             border-radius: 10px;
             background-color: white;
-            padding: 10px;
-            min-width: 100%;
-            align-items: center;
-            display: flex;
+            padding: 30px;
+            justify-content: center;
         }
 
         p {
         }
+
+        .home-indicator {
+            width: 100px;
+            height: 5px;
+            background-color: #bdbdbd;
+            border-radius: 2.5px;
+            margin-bottom: 15px;
+        }
+
+        #hd {
+            transition: 500ms;
+        }
+
+        #spec {
+            display: flex;
+            justify-content: center;
+            width: 100hv;
+        }
+
 
     </style>
 </head>
@@ -109,6 +116,7 @@
     </div>
 
     <div id="menu">
+        <div id = 'spec'><div class = 'home-indicator' id = 'hd'></div></div>       
         <img src = 'https://cdn-icons-png.flaticon.com/512/813/813670.png' width="8%" height="8%" class = 'menu_button' id = 'home' onclick = 'jump("home")'>
         <img src = 'https://cdn-icons-png.flaticon.com/512/3005/3005154.png' width="8%" height="8%" class = 'menu_button' id = 'event' onclick = 'jump("event")'>
         <img src = 'https://cdn-icons-png.flaticon.com/512/262/262038.png' id = 'plus' width="10%" height="10%" class = 'menu_button' onclick = 'plus()'>
@@ -120,15 +128,15 @@
         function jump(name) {
             const element = document.getElementById(`${name}`);
             element.style.transform = "translateY(-12px)";
-            element.style.transition = "0.25s";
+            element.style.transition = "0.3s";
 
             setTimeout(() => {
                 element.style.transform = "translateY(5px)";
 
                 setTimeout(() => {
                     element.style.transform = "translateY(0)";
-                }, 250);
-            }, 250);
+                }, 300);
+            }, 300);
         }
 
         
@@ -137,22 +145,34 @@
             if (menu.style.paddingTop === '20px') {
                 menu.style.paddingTop = '200px';
                 const gl = document.getElementById("gl");
-                gl.style.filter = 'blur(5px)';
+                gl.style.filter = 'blur(20px)';
+                document.getElementById('hd').style.transform = "translateY(-180px)";
             } else {
                 menu.style.paddingTop = '20px';
+                document.getElementById('hd').style.transform = "translateY(0)";
                 const gl = document.getElementById("gl");
                 gl.style.filter = 'blur(0)';
 
             }
 
-            jump('plus')
+            const element = document.getElementById('plus');
+            element.style.transform = "scale(0.7)";
+            element.style.transition = "0.3s";
+
+            setTimeout(() => {
+                element.style.transform = "scale(1.2)";
+                setTimeout(() => {
+                    element.style.transform = "scale(1)"
+                }, 300)
+            }, 300);
         }
 
         function pyst() {
             const gl = document.getElementById("gl");
-            if (gl.style.filter === 'blur(5px)') {
+            if (gl.style.filter === 'blur(20px)') {
                 document.getElementById("menu").style.paddingTop = '20px';
                 gl.style.filter = 'blur(0)'
+                document.getElementById('hd').style.transform = "translateY(0)";
             }
         }
     </script>
