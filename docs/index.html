@@ -1,253 +1,563 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Разворачивающийся список</title>
+	<title>Diamonds Team (тест)</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Symbols:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content, viewport-fit=cover">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <title>Блокировка изменения масштаба</title>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<meta name="mobile-web-app-capable" content="yes">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
+	</style> <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</head>
 
+<style>
+	
+	:root {
+		--tg-theme-secondary-bg-color: var(--tg-theme-secondary-bg-color);
+		--tg-theme-text-color: var(--tg-theme-text-color);
+		--tg-theme-button-color: var(--tg-theme-button-color);
+		--tg-theme-text-color: var(--tg-theme-text-color);
+		
+	}
+	
+	body {
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		text-align: center;
+		display: flex;
+		color: var(--tg-theme-text-color);
+		font-family: 'Roboto', Arial;
+		font-size: 20px;
+		background-color: var(--tg-theme-secondary-bg-color);
+		user-select: none;
+		margin-left: 15px;
+		margin-right: 15px;
+		outline: none;
+	}
+	
+	img {
+		margin: 10px;
+		border: 2px solid var(--tg-theme-button-color);
+		width: 150px;
+		height: 150px;
+		margin-left: auto; margin-right: auto;
+		border-radius: 40px;
+		box-shadow: 0 0 20px var(--tg-theme-button-color);
+		display: block;
+	}
 
-    <style>
-        body {
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-            display: flex;
-            color: var(--tg-theme-text-color);
-            font-family: 'Roboto', Arial;
-            font-size: 20px;
-            background-color: rgb(240, 240, 240);
-            user-select: none;
-            margin-left: 15px;
-            margin-right: 15px;
-            outline: none;
-	    }
+	button {
+		margin: 10px;
+		font-family: 'Roboto', Arial;
+		font-size: 20px;
+		border-radius: 15px;
+		color: white;	
+		margin-left: auto; margin-right: auto;
+		background-color: var(--tg-theme-button-color);
+		border: none;
+		padding: 10px 20px;
+		width: 335px;
+		height: 60px;
+		display: block;
+		cursor: pointer;
+            	transition: transform 0.5s
+	}
 
-        #menu {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: black;
-            text-align: center;
-            padding-top: 20px;
-            padding-bottom: 10px;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            transition: 500ms;
-            z-index: 3;
+	button:active {
+            transform: scale(0.5)
+        }
+	
+	.n {
+		text-align: center;
+		background-color: var(--tg-theme-bg-color);
+		margin-bottom: 10px;
+		padding: 5px;
+		border-radius: 15px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	}
 
+	.p {
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		background-color: var(--tg-theme-bg-color);
+		border-radius: 15px;
+		padding: 5px;
+		margin: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	h1 {
+		margin: 0;
+		padding: 0;
+	}
+	
+	h6 {
+		margin: 0;
+		padding-left: 0;
+		padding-right: 0;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	#block1 {
+		display: block;
+	}
+
+	input {
+		margin-left: auto; margin-right: auto;
+		background-color: var(--tg-theme-secondary-bg-color);
+		border: 2px solid var(--tg-theme-button-color);
+		border-radius: 15px;
+		width: 331px;
+		height: 58px;
+		padding: 0;
+		padding-left: 2px;
+		color: var(--tg-theme-text-color);
+		font-family: 'Roboto', Arial;
+		font-size: 20px;
+		text-transform: uppercase;
+	}
+
+	input:focus {
+		outline: none;
+		box-shadow: 0 0 20px var(--tg-theme-button-color);
+	}
+
+	hr {
+		color: var(--tg-theme-section-separator-color);
+		margin: 6px;
+		width: 40%;
+		margin-left: auto; margin-right: auto;
+	}
+
+	#p1 {
+		margin: 4px;
+	}
+
+	#b {
+	}
+
+	#block2 {
+		display: none;
+	}
+
+	#bst1 {
+	}
+
+	.prodol {
+		width: 100%;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	}
+
+	#block3 {
+		display: none;
+	}
+
+	.error {
+		color: red;
+	}
+
+	#no {
+		background-color: red;
+	}
+
+	#block4 {
+		display: none;
+	}
+
+	.checkbox {
+		appearance: none; -webkit-appearance: none; -moz-appearance: none;
+		margin: 10px;
+		border-radius: 5px;
+		color: var(--tg-theme-button-color);
+		background-color: transparent;
+		border: 2px solid var(--tg-theme-button-color);
+		margin-left: 0; margin-right: 0;
+		padding: 0;
+		width: 25px;
+		height: 25px;
+		display: flex;
+	}
+
+	.span {
+		justify-content: center;
+		padding: 0;
+		margin: 0;
+		align-items: center;
+		text-align: center;
+		display: flex;
+	}
+
+	.span input[type='checkbox'] {
+		margin-right: 5px;
+	}
+
+	div {
+		max-width: 450px;
+	}
+
+	.pyst {
+		padding-top: 6px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.blurred {
+        	position: absolute;
+	        top: 0;
+	        left: 0;
+	        width: 100%;
+	        height: 100%;
+		backdrop-filter: blur(30px);
+	        -webkit-backdrop-filter: blur(30px);
+	        display: none;
+	        z-index: 1;
         }
 
-        span {
-            margin-right: 5px;
-            margin-left: 5px;
-        }
-
-        .menu_button {
-            margin-right: 10px;
-            margin-left: 10px;
-            filter: invert()
-        }
-
-        .ava {
-            border: 2px solid rgb(221, 74, 111);
-            width: 100px;
-            height: 100px;
-            overflow: hidden;
-            border-radius: 50px;
-        }
-
-        .data {
-        }
-
-        #dt {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgb(221, 74, 111);
-            text-align: center;
-            padding-top: 0;
-            padding-bottom: 2px;
-            opacity: 0.5;
-        }
-
-        #gl {
-            z-index: 1;
-            transition: 500ms;
-        }
-
-        .div_pyst {
-            justify-content: none;
-            border-radius: 10px;
-            background-color: white;
-            padding: 30px;
-            justify-content: center;
-        }
-
-        p {
-        }
-
-        .home-indicator {
-            width: 100px;
-            height: 5px;
-            background-color: #bdbdbd;
-            border-radius: 2.5px;
-            margin-bottom: 15px;
-        }
-
-        #hd {
-            transition: 500ms;
-        }
-
-        #spec {
-            display: flex;
-            justify-content: center;
-            width: 100vw;
-        }
-
-        #param {
-            padding-top: 5px;
-            padding-bottom: 5px;
-            filter: invert();
-            width: 25px;
-            height: 25px;
-            padding-left: 10px;
-            padding-right: 10px;
-            margin: 10px;
-            border-radius: 15px;
-            background-color: white;
-            position: fixed;
-            top: 0;
-            right: 0;
-            opacity: 0.7;
-        }
-
-        #nasad {
-            padding-top: 5px;
-            padding-bottom: 5px;
-            filter: invert();
-            width: 25px;
-            height: 25px;
-            padding-left: 10px;
-            padding-right: 10px;
-            margin: 10px;
-            border-radius: 15px;
-            background-color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            opacity: 0.7;
-        }
-
-        #param0 {
+	.overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+	    transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            background-color: transparent;
+            padding: 20px;
+            display: none;
             z-index: 2;
         }
 
-
-    </style>
-</head>
-<body>
-    <div id = 'param0'>
-        <img src = 'https://img.icons8.com/?size=100&id=E2Y2iSjLCP6k&format=png&color=000000' id = 'nasad' style = 'transition: 500ms'>
-        <div id = 'param1' style = 'transition: 500ms;'><img src = 'https://cdn-icons-png.flaticon.com/128/7131/7131131.png' id = 'param' onclick = 'param()' style = 'transition: 500ms'></div>
-    </div>
-
-    <div id = 'gl' onclick="pyst()" style="filter: blur(0px);">
-        <div class="div_pyst">
-            <div class = 'ava'><img src = 'https://avatanplus.com/files/photos/mid/5ed4f2ff1b7441726fd53488.png' width="100%" height="100%"></div>
-            <p>♡ 𝑵𝒐 𝑶𝒏𝒆 ♡</p>
-        </div>
-    </div>
-
-    <div id="menu" style="padding-top: 20px;">
-        <div id = 'spec'><div class = 'home-indicator' id = 'hd'></div></div>       
-        <img src = 'https://cdn-icons-png.flaticon.com/512/813/813670.png' width="8%" height="8%" class = 'menu_button' id = 'home' onclick = 'jump("home")'>
-        <img src = 'https://cdn-icons-png.flaticon.com/512/3005/3005154.png' width="8%" height="8%" class = 'menu_button' id = 'event' onclick = 'jump("event")'>
-        <img src = 'https://cdn-icons-png.flaticon.com/512/262/262038.png' id = 'plus' width="10%" height="10%" class = 'menu_button' onclick = 'plus()'>
-        <img src = 'https://cdn-icons-png.flaticon.com/512/149/149309.png' width="8%" height="8%" class = 'menu_button' id = 'search' onclick = 'jump("search")'>
-        <img src = 'https://cdn-icons-png.flaticon.com/512/1159/1159740.png' width="8%" height="8%" class = 'menu_button' id = 'user' onclick = 'jump("user")'>
-    </div>
-
-    <script>
-        function jump(name) {
-            const element = document.getElementById(`${name}`);
-            element.style.transform = "translateY(-12px)";
-            element.style.transition = "0.3s";
-
-            setTimeout(() => {
-                element.style.transform = "translateY(5px)";
-
-                setTimeout(() => {
-                    element.style.transform = "translateY(0)";
-                }, 300);
-            }, 300);
+	.butt {
+            z-index: 3;
         }
 
-        
-        function plus() {
-            const menu = document.getElementById("menu");
-            if (menu.style.paddingTop === '20px') {
-                menu.style.paddingTop = '200px';
-                const gl = document.getElementById("gl");
-                gl.style.filter = 'blur(20px)';
-                document.getElementById('hd').style.transform = "translateY(-180px)";
-            } else {
-                menu.style.paddingTop = '20px';
-                document.getElementById('hd').style.transform = "translateY(0)";
-                const gl = document.getElementById("gl");
-                gl.style.filter = 'blur(0)';
+	.pp {
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		background-color: var(--tg-theme-bg-color);
+		border-radius: 15px;
+		padding: 5px;
+		margin: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
 
-            }
+	#block5 {
+		display: none;
+	}
 
-            const element = document.getElementById('plus');
-            element.style.transform = "scale(0.7)";
-            element.style.transition = "0.3s";
+	.gif {
+		position: absolute;
+		width: 85%;
+	        height: 100%;
+	        display: flex;
+	        align-items: center;
+	        justify-content: center;
+		margin: 0;
+		border: 0;
+		margin-left: 0; margin-right: 0;
+		border-radius: 0;
+		box-shadow: none;
+		display: block;
+		z-index: 1;
+		pointer-events: none;
+	}
 
-            setTimeout(() => {
-                element.style.transform = "scale(1.2)";
-                setTimeout(() => {
-                    element.style.transform = "scale(1)"
-                }, 300)
-            }, 300);
+	#finish0 {
+		width: 100%;
+	}
+
+	a, a:focus, a:hover, a:active {
+		text-decoration: none;
+		color: var(--tg-theme-button-color);
+	}
+
+	#mmm {
+		margin-top: 0;
+	}
+
+	#zzz2 {
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.zxz {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff7eb3, #ff758c, #ffbf45, #71c9ce);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+	
+</style>
 
-        function pyst() {
-            const gl = document.getElementById("gl");
-            if (gl.style.filter === 'blur(20px)') {
-                document.getElementById("menu").style.paddingTop = '20px';
-                gl.style.filter = 'blur(0)'
-                document.getElementById('hd').style.transform = "translateY(0)";
-            }
-        }
+<body>    
+	<div id = 'block1'>
+	<div class = 'n' id = 'bst'>
+	<img
+		src="./DT.jpg"
+		alt="Diamonds Team иконка"
+		width="40%">
+		<h6 class = 'zxz'>Diamonds Team</h6>
+	</div>
+	
+	<div>
+		<p class = 'p' id = 'bst1'>Добро пожаловать в наш альянс! Общайся, заводи новые знакомства, транслируй игры, делись полезными советами, и не только! Каждый участник может найти здесь поддержку и дружбу.<br>Стань же частью нашей дружной семьи Diamonds Team!</p>
+		<button id = 'prodol' class = 'prodol' onclick = 'x()'>Продолжить</button>
+	</div>
+	</div>
 
-        function param() {
-            const param = document.getElementById('param');
-            param.style.opacity = '1';
-            document.getElementById('gl').style.filter = 'blur(20px)';
-            document.getElementById('nasad').style.transform = 'translateX(20px)';
-            setTimeout(() => {
-                document.getElementById('nasad').style.transform = 'translateX(-100px)';
-                const param1 = document.getElementById('param1');
-                const center = window.innerWidth / 2;
-                const center1 = param.offsetWidth / 2;
-                const center0 = center - center1 - 10;
-                param.style.transform = `translateX(-${center0}px)`;
+	<div id = 'block2'>
+		<h1>Авторизация</h1>
+	<div class = 'n' id = 'b'>
+		<p id = 'p1'>Для того, чтобы пройти дальше, тебе нужно ввести свой игровой тег-ID.</p>
+		<input id = 'avt' placeholder = '#EXAMPLE' value = '#' onkeydown="a(event)"><br>
+		<button id = 'yyy' onclick = 'y()'>Авторизоваться</button>
+	</div>
+		<p id = 'prover' class = 'error'></p>
+	</div>
 
-                setTimeout(() => {
-                    param.style.paddingLeft = '100px';
-                    param.style.paddingRight = '100px';
-                    param.style.paddingBottom = '350px';
-                    const center2 = center1 * 2 + 200 / 2;
-                    const center3 = center2 - center - 20;
-                    param.style.transform = `translateX(${center3}px)`;
-                    setTimeout(() => {
-                        param.style.paddingBottom = '300px';
-                    }, 500)
-                }, 600)
-            }, 500)
-        }
+	
+	<div class="blurred"></div>
+	<div id = 'false_club' class = 'overlay'>
+		<div class = 'pp'>
+			<h1>Ты уверен?</h1>
+			<hr>
+			<p class = 'pyst'>Судя по данным твоего игрового аккаунта, ты не являешься участником альянса Diamonds Team.<br>Всё ровно хочешь продолжить вступление?</p>
+			<button onclick = 'b()'>Продолжить</button>
+			<button onclick = 'b1()'>Отмена</button>
+		</div>
+	</div>
+	
+	<div id = 'block3' class = 'content'>
+		<div class = 'n'>
+			<img id = 'icon' src = ''>
+			<h1 id = 'nick''></h1>
+		</div>
+		
+		<div class = 'p'>
+			<p class = 'pyst'>Это твой игровой аккаунт?</p>
+		
+			<button onclick = 'z()'>Да</button>
+			<button id = 'no'>Нет</button>
+		</div>
+	</div>
 
-    </script>
+	<div id = 'block4' id = 'zzz2'>
+		<a href = 'https://telegra.ph/DOBRO-POZHALOVAT-V-DIMONDS-TEAM-14-05-22' target="_blank"><h1>Правила</h1></a>
+		<p class = 'n' id = 'mmm'>На этом этапе тебе необходимо ознакомиться с основными правилами альянса. Это важно, чтобы в дальнейшем избежать ошибок, которые могут повлечь за собой последствия в виде наказаний. Мы стремимся создать дружелюбную и безопасную среду для всех участников, поэтому соблюдение правил является обязательным.
+Нажимая на галочку ниже, ты подтверждаешь своё ознакомление с правилами и их соблюдение</p>
+		<div class = 'p'>
+		<label class = 'span'>
+			<input type = 'checkbox' class = 'checkbox' id = 'zzz'>
+			<span>Я подтверждаю.</span>
+		</label>
+		<button id = 'zzz1' disabled onclick = 'v()'>Продолжить</button>
+		</div>
+	</div>
+
+	<div id = 'block5'>
+		<convas id = 'gif'></convas>
+		<h1>Финиш!</h1>
+		<p class = 'p'>Поздравляю! Ты успешно прошел все этапы вступления в наш альянс. Остался последний шаг. Присоединяйся к нашему Telegram-чату, чтобы быть в курсе всех новостей и событий. Мы уверены, что вместе мы сможем достичь новых высот и преодолеть любые препятствия. Нажми на ссылку ниже, чтобы присоединиться:</p>
+		<button onclick = "finishh()" id = 'finish0'>Присоединиться</button>
+	</div>
+	
+	<script>
+		const bg = getComputedStyle(document.documentElement).getPropertyValue ('--tg-theme-secondary-bg-color');
+		const bg1 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-bg-color');
+
+		const bg2 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-button-color');
+		const bg3 = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-text-color');
+		
+		function tema () {
+			const color = tinycolor(bg1).darken(5).toString();
+			if (Telegram.WebApp.colorScheme === 'dark') {
+				document.addEventListener('DOMContentLoaded', () => {
+	    				const elements = document.querySelectorAll('.n');
+	    				elements.forEach(element => {
+	        				element.style.setProperty('background-color', color);
+	    				});
+					
+					const elements1 = document.querySelectorAll('.p');
+					elements1.forEach(element => {
+	        				element.style.setProperty('background-color', color);
+	    				});
+				});
+			} else {
+				document.addEventListener('DOMContentLoaded', () => {
+	    				const elements = document.querySelectorAll('body');
+	    				elements.forEach(element => {
+	        				element.style.setProperty('background-color', color);
+	    				});
+				});
+			}
+		}
+		
+		function tema1 () {
+			document.addEventListener('DOMContentLoaded', () => {
+				const buttons = document.querySelectorAll('button');
+        			buttons.forEach(button => {
+        				button.style.setProperty('color', 'black');
+    				});
+			});
+		}
+
+		if (bg === bg1) {
+			tema ();
+		}
+			
+		if (bg3 === bg2) {
+			tema1 ();
+		}
+		
+		/* if (Telegram.WebApp.platform === 'ios') {
+			if (Telegram.WebApp.colorScheme === 'dark') {
+				document.addEventListener('DOMContentLoaded', () => {
+		    			const elements = document.querySelectorAll('.n');
+		    			elements.forEach(element => {
+		        			element.style.setProperty('background-color', bg);
+		    			});
+						
+					const elements1 = document.querySelectorAll('.p');
+					elements1.forEach(element => {
+		        			element.style.setProperty('background-color', bg);
+		    			});
+				});
+	
+				document.addEventListener('DOMContentLoaded', () => {
+		    			const elements = document.querySelectorAll('body');
+		    			elements.forEach(element => {
+		        			element.style.setProperty('background-color', bg1);
+		    			});
+				});
+			}
+		} */
+		
+	</script>
+	
+	<script>
+		function x() {
+			document.getElementById ('block1').style.display = 'none';
+			document.getElementById ('block2').style.display = 'block';
+		}
+
+		let tg = window.Telegram.WebApp;
+		tg.expand();
+	</script>
+
+	<script>
+		function a(event) { 
+			if (event.key === "Enter") {
+				y();
+			}
+		}
+
+		function b() {
+			const blurred = document.querySelector('.blurred');
+		        const overlay = document.querySelector('.overlay');
+		        blurred.style.display = 'none';
+		        overlay.style.display = 'none';
+		        overlay.style.filter = 'block';
+			document.getElementById ('block3').style.display = 'none';
+			document.getElementById ('false_club').style.display = 'none';
+			document.getElementById ('block4').style.display = 'block';
+		}
+
+		function b1() {
+			Telegram.WebApp.close();
+		}
+			
+		function y() {
+			var g = document.getElementById ('avt').value;
+			var g1 = g.substring(1);
+			if (g === '' || g1 === '') {
+				var er = document.getElementById ('prover');
+				er.innerHTML = '*Поле ввода не содержит никакой информации. Пожалуйста, заполни его.'
+			}
+			else if (g.includes ('#')) {
+				axios.get('https://noone0001.pythonanywhere.com/profile/' + g1)
+				.then(response => {
+					zapr = response.data
+					if (response.data.status === 'tr') {
+						var icon = document.getElementById('icon');
+						icon.src = response.data.icon;
+	
+						var nick = document.getElementById('nick');
+						nick.innerHTML = response.data.name;
+							
+						document.getElementById ('block2').style.display = 'none';
+						document.getElementById ('block3').style.display = 'block';
+					} else {
+						var er = document.getElementById ('prover');
+						er.innerHTML = '*Некорректный тег-ID. Попробуй ещё раз.';
+					}
+				});
+				
+			} else {
+				var er = document.getElementById ('prover');
+				er.innerHTML = '*Игровой тег-ID должен содержать символ "#".'
+			}
+		}
+		
+		function z() {
+			if (zapr.club === 'Green Diamond' || zapr.club === 'Red Diamonds' || zapr.club === 'Blue Diamonds' || zapr.club === 'Pink Diamonds') {
+				document.getElementById ('block3').style.display = 'none';
+				document.getElementById ('block4').style.display = 'block';
+			
+			} else {
+				// document.getElementById ('block3').style.display = 'none';
+				// document.getElementById ('false_club').style.display = 'block';
+		        	const blurred = document.querySelector('.blurred');
+		            	const overlay = document.querySelector('.overlay');
+		            	blurred.style.display = 'block';
+		            	overlay.style.display = 'block';
+		            	overlay.style.filter = 'none';
+			        
+			}
+		}
+
+		document.getElementById('zzz').addEventListener('change', function() { 
+			document.getElementById('zzz1').disabled = !this.checked; 
+		});
+		
+		function v() {
+			document.getElementById ('block4').style.display = 'none';
+			document.getElementById ('block5').style.display = 'block';
+
+		function createConfetti() {
+            		confetti ({
+	                	particleCount: 50,
+	                	angle: 90,
+	                	spread: 90,
+	                	startVelocity: 60,
+	                	origin: { x: Math.random(), y: 0 },
+	                	ticks: 300,
+	                	gravity: 1,
+	                	colors: ['#ff5733', '#33ff57', '#3357ff', '#ff33a1', '#a133ff']
+	            	});
+        	}
+
+        // Создаем конфетти каждые 50 миллисекунд
+        setInterval(createConfetti, 100);
+		}
+
+	function finishh() {
+		let data = {
+			stat: 'tr',
+			name: zapr.name,
+			club: zapr.club
+		}
+
+		const tg = window.Telegram.WebApp;
+		tg.sendData(JSON.stringify(data));
+		Telegram.WebApp.close();
+		window.location.href = 'https://t.me/diamondsteam_bs';
+	}
+		
+	</script>
+
 </body>
-</html>
+</html>	
